@@ -1,0 +1,83 @@
+<h1>TABLE</h1>
+<hr>
+<table class="content-table">
+
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>NAME</th>
+    <th>AGE</th>
+    <th>COUNTRY</th>
+    <th>preferred color</th>
+    <th width="10%">ACTION</th>
+
+  </tr>
+  </thead>
+
+  <tbody>
+  <tr *ngFor="let module of rows; let index = index">
+    <td>{{module.ID}}</td>
+    <td>{{module.NAME}}</td>
+    <td>
+      {{module.AGE}}
+      <span *ngIf="module.AGE < 30 && module.AGE > 20">young</span>
+      <span *ngIf="module.AGE < 45 && module.AGE >= 30">mid age</span>
+      <span *ngIf="module.AGE >= 45">old</span>
+      <span *ngIf="module.AGE <= 20">blue age</span>
+    </td>
+    <td>{{module.COUNTRY}}</td>
+    <td>
+      <span [ngStyle]="{'color': module.preferred_color}">{{module.preferred_color}}</span>
+    </td>
+    <td><button class="btn btn-sm btn-danger" (click)="deleteMembership(index)">delete record</button> </td>
+  </tr>
+  </tbody>
+
+</table>
+
+
+<form>
+  <div class="form-group row">
+    <label>ID</label>
+    <input class="form-control form-control-sm" name="venus" type="text" [(ngModel)]="ID">
+  </div>
+
+  <div class="form-group row">
+    <label>NAME</label>
+    <input class="form-control form-control-sm" name="mars" type="text" [(ngModel)]="NAME">
+  </div>
+
+  <div class="form-group row">
+    <label>AGE</label>
+    <input class="form-control form-control-sm" name="uranus" type="text" [(ngModel)]="AGE">
+  </div>
+
+  <div class="form-group row">
+    <label>preferred color</label>
+    <input class="form-control form-control-sm" name="world" type="text" [(ngModel)]="preferred_color">
+  </div>
+
+  <div class="form-group row">
+    <label>COUNTRY</label>
+    <input class="form-control form-control-sm" name="neptun" type="text" [(ngModel)]="COUNTRY">
+  </div>
+  <button (click)="SubmitMembership()" class="btn btn-sm btn-success">submit</button>
+</form>
+
+
+<mat-list>
+  <div mat-subheader>Folders</div>
+  <mat-list-item *ngFor="let folder of folders">
+    <mat-icon mat-list-icon>folder</mat-icon>
+    <div mat-line>{{folder.name}}</div>
+    <div mat-line> {{folder.updated | date}} </div>
+  </mat-list-item>
+  <mat-divider></mat-divider>
+  <div mat-subheader>Notes</div>
+  <mat-list-item *ngFor="let note of notes">
+    <mat-icon mat-list-icon>note</mat-icon>
+    <div mat-line>{{note.name}}</div>
+    <div mat-line> {{note.updated | date}} </div>
+  </mat-list-item>
+</mat-list>
+
