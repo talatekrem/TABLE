@@ -78,6 +78,7 @@ export class AppComponent {
     }
   ];
 
+
   folders: Section[] = [
     {
       name: 'Photos',
